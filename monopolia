@@ -1,0 +1,195 @@
+# cvrsxd33
+# Монополия
+import random
+import time
+cub = [1, 2, 3, 4, 5, 6]
+zxc = 1500
+duck = 1500
+step1 = 0
+step2 = 0
+start = input('Напишите \'играть\': ')
+if start == 'играть':
+    vote = input('Выберите фигурку(лошадка, машинка, шляпа): ')
+    if vote == 'лошадка':
+        print('Ваша фигурка - лошадка, а противника - уточка')
+    elif vote == 'машинка':
+        print('Ваша фигурка - машинка, а противника - уточка')
+    elif vote == 'машинка':
+        print('Ваша фигурка - шляпа, а противника - уточка')
+    print("Ваши балансы = 1500")
+    while zxc > 0 and duck > 0:
+        kmb = ['Камень', 'Ножницы', 'Бумага']
+        while True:
+            print('Играйте на камень ножницы бумага кто кидает кубики первый')
+            b = input('Выбери: Камень, Ножницы или Бумага: ')
+            c = random.choice(kmb)
+            votewl = 0
+            duckwl = 0
+            print(b)
+            print(c)
+            if b == "Камень" and c == "Камень":
+                print('Ничья!', end='\n\n')
+            elif b == "Камень" and c == "Ножницы":
+                print('Ты победил!', end='\n\n')
+                votewl += 1
+                break
+            elif b == "Камень" and c == "Бумага":
+                print('Ты проиграл :(', end='\n\n')
+                duckwl += 1
+                break
+            elif b == "Ножницы" and c == "Камень":
+                print('Ты проиграл :(', end='\n\n')
+                duckwl += 1
+                break
+            elif b == "Ножницы" and c == "Ножницы":
+                print('Ничья', end='\n\n')
+            elif b == "Ножницы" and c == "Бумага":
+                print('Ты победил!', end='\n\n')
+                votewl += 1
+                break
+            elif b == "Бумага" and c == "Камень":
+                print('Ты победил!', end='\n\n')
+                votewl += 1
+                break
+            elif b == "Бумага" and c == "Ножницы":
+                print('Ты проиграл :(', end='\n\n')
+                duckwl += 1
+                break
+            elif b == "Бумага" and c == "Бумага":
+                print('Ничья', end='\n\n')
+            else:
+                print('неверный выбор', end='\n\n')
+                continue
+        while True:
+            if votewl == 1:
+                print('Твоя очередь бросать')
+                time.sleep(1)
+                cubik = input('Введите "бросить": ')
+                if cubik == 'бросить':
+                    numstep = random.choice(cub)
+                    numstep2 = random.choice(cub)
+                    numstp = numstep + numstep2
+                    time.sleep(1)
+                    print('Выпало число:', numstp)
+                    step1 += numstp
+                    time.sleep(1)
+                    print('Теперь ты на клетке', step1)
+                    time.sleep(1)
+                    if step1 == 2:
+                        dom = input('Вы попали на клетку с домом1, его стоимость 100, будете покупать(да, нет)? ')
+                        if dom == 'да':
+                            zxc -= 100
+                            print('Поздравляем с покупкой дома1')
+                        elif dom == 'нет':
+                            print('Вы не купили дом1')
+                    elif step1 == 4:
+                        dom = input('Вы попали на клетку с домом2, его стоимость 200, будете покупать(да, нет)? ')
+                        if dom == 'да':
+                            zxc -= 200
+                            print('Поздравляем с покупкой дома2')
+                        elif dom == 'нет':
+                            print('Вы не купили дом2')
+                    elif step1 == 6:
+                        dom = input('Вы попали на клетку с домом3, его стоимость 300, будете покупать(да, нет)? ')
+                        if dom == 'да':
+                            zxc -= 300
+                            print('Поздравляем с покупкой дома3')
+                        elif dom == 'нет':
+                            print('Вы не купили дом3')
+                    elif step1 == 8:
+                        dom = input('Вы попали на клетку с домом4, его стоимость 400, будете покупать(да, нет)? ')
+                        if dom == 'да':
+                            zxc -= 400
+                            print('Поздравляем с покупкой дома4')
+                        elif dom == 'нет':
+                            print('Вы не купили дом4')
+                    elif step1 == 10:
+                        dom = input('Вы попали на клетку с домом5, его стоимость 500, будете покупать(да, нет)? ')
+                        if dom == 'да':
+                            zxc -= 500
+                            print('Поздравляем с покупкой дома5')
+                        elif dom == 'нет':
+                            print('Вы не купили дом5')
+                    elif step1 == 12:
+                        dom = input('Вы попали на клетку с домом6, его стоимость 600, будете покупать(да, нет)? ')
+                        if dom == 'да':
+                            zxc -= 600
+                            print('Поздравляем с покупкой дома6')
+                        elif dom == 'нет':
+                            print('Вы не купили дом6')
+                    else:
+                        print('Вы попали на пустую клетку')
+                    time.sleep(1)
+                    print('Ваш баланс:', str(zxc))
+                else:
+                    print('error')
+                votewl -= 1
+                duckwl += 1
+            elif duckwl == 1:
+                print('Очередь бросать оппонента')
+                numstp1 = random.choice(cub)
+                numstp2 = random.choice(cub)
+                numstp = numstp1 + numstp2
+                time.sleep(1)
+                print('Выпало число:', numstp)
+                step2 += numstp
+                time.sleep(1)
+                print('Теперь он на клетке', step2)
+                time.sleep(1)
+                if step2 == 2:
+                    dn = [0, 1]
+                    dn1 = random.choice(dn)
+                    time.sleep(1)
+                    if dn1 == 1:
+                        duck -= 100
+                        print('Ваш оппонент купил дом1')
+                    else:
+                        print('Ваш оппонент не купил дом1')
+                elif step2 == 4:
+                    dn = [0, 1]
+                    dn1 = random.choice(dn)
+                    if dn1 == 1:
+                        duck -= 200
+                        print('Ваш оппонент купил дом2')
+                    else:
+                        print('Ваш оппонент не купил дом2')
+                elif step2 == 6:
+                    dn = [0, 1]
+                    dn1 = random.choice(dn)
+                    if dn1 == 1:
+                        duck -= 300
+                        print('Ваш оппонент купил дом3')
+                    else:
+                        print('Ваш оппонент не купил дом3')
+                elif step2 == 8:
+                    dn = [0, 1]
+                    dn1 = random.choice(dn)
+                    if dn1 == 1:
+                        duck -= 400
+                        print('Ваш оппонент купил дом4')
+                    else:
+                        print('Ваш оппонент не купил дом4')
+                elif step2 == 10:
+                    dn = [0, 1]
+                    dn1 = random.choice(dn)
+                    if dn1 == 1:
+                        duck -= 500
+                        print('Ваш оппонент купил дом5')
+                    else:
+                        print('Ваш оппонент не купил дом5')
+                elif step2 == 12:
+                    dn = [0, 1]
+                    dn1 = random.choice(dn)
+                    if dn1 == 1:
+                        duck -= 600
+                        print('Ваш оппонент купил дом6')
+                    else:
+                        print('Ваш оппонент не купил дом6')
+                else:
+                    print('Ваш оппонент попал на пустую клетку')
+                print('Баланс вашего оппонента:', str(duck))
+                votewl += 1
+                duckwl -= 1
+
+
+                    
